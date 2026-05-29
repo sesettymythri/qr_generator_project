@@ -1,0 +1,20 @@
+import qrcode
+data = input("Enter text or URL: ")
+filename = input("Enter file name: ")
+box=int(input("Enter box size:"))
+border_size=int(input("Enter border size:"))
+qr = qrcode.QRCode(
+    version=1,
+    box_size=box,
+    border=border_size
+)
+
+qr.add_data(data)
+qr.make(fit=True)
+
+img = qr.make_image(fill_color="black", back_color="white")
+
+img.save(filename + ".png")
+img.show()
+
+print("QR Code saved successfully!")
